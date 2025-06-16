@@ -219,3 +219,78 @@ int main(void) {
 ⸻
 
 궁금하다면 삼중 포인터가 실제로 언제 필요한지도 예제로 설명드릴 수 있어요!
+
+
+## 명령줄 인자 값 (메인 함수, 매개변수)
+정확해요! ✅
+C 언어에서 main(int argc, char **argv) 형태로 작성하면, 실행 시 문자열 인자를 외부에서 전달받을 수 있습니다.
+
+⸻
+
+🔹 즉, 결론
+
+main() 함수에 argc, argv를 쓰면, 프로그램을 실행할 때 문자열 인자를 던질 수 있음!
+
+⸻
+
+🔸 예시로 정리
+
+📄 main.c
+
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+    for (int i = 0; i < argc; i++) {
+        printf("argv[%d] = %s\n", i, argv[i]);
+    }
+    return 0;
+}
+
+💻 컴파일
+
+gcc main.c -o myprog
+
+💻 실행
+
+./myprog apple banana cherry
+
+📘 출력 결과
+
+argv[0] = ./myprog      // 실행 파일 자체
+argv[1] = apple
+argv[2] = banana
+argv[3] = cherry
+
+
+⸻
+
+🔸 참고: 문자열을 숫자로 바꿔서 사용하기
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[]) {
+    if (argc < 3) {
+        printf("사용법: %s 숫자1 숫자2\n", argv[0]);
+        return 1;
+    }
+
+    int a = atoi(argv[1]);
+    int b = atoi(argv[2]);
+    printf("%d + %d = %d\n", a, b, a + b);
+    return 0;
+}
+
+실행
+
+./myprog 10 20
+
+출력
+
+10 + 20 = 30
+
+
+⸻
+
+필요하시면 argc, argv를 활용한 명령어 인터페이스 프로그램도 만들어 드릴게요!
+궁금한 점 더 있으면 얼마든지 질문 주세요 :)
