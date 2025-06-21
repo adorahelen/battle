@@ -1,5 +1,7 @@
 *
 !*.c
+!*.py
+!*.java
 !.gitignore
 !README.md
 !.vscode/
